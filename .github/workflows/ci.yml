@@ -27,19 +27,44 @@ jobs:
           pip install reana-commons
 
       - name: Build analysis environment image
-        run: docker build -f environments/reana-demo-bsm-search/Dockerfile -t reanahub/reana-demo-bsm-search .
+        run:
+          docker build -f environments/reana-demo-bsm-search/Dockerfile -t
+          reanahub/reana-demo-bsm-search .
 
       - name: Validate workflow specification file
         run: reana-client validate
 
       - name: Test whether the ROOT version is well 6
-        run: docker run -i --rm -v `pwd`/code:/code reanahub/reana-demo-bsm-search root-config --version | grep -q ^6
+        run:
+          docker run -i --rm -v `pwd`/code:/code reanahub/reana-demo-bsm-search
+          root-config --version | grep -q ^6
 
       - name: Test whether we can import hftools Python library
-        run: docker run -i --rm -v `pwd`/code:/code reanahub/reana-demo-bsm-search /bin/bash -c 'source /usr/local/bin/thisroot.sh && python -c "import hftools.hepdata"'
+        run:
+          docker run -i --rm -v `pwd`/code:/code reanahub/reana-demo-bsm-search
+          /bin/bash -c 'source /usr/local/bin/thisroot.sh && python -c "import
+          hftools.hepdata"'
 
-      - name: Test whether the latest analysis code is well present inside the container
-        run: docker run -i --rm -v `pwd`/code:/newcode reanahub/reana-demo-bsm-search diff -r /code /newcode
+      - name:
+          Test whether the latest analysis code is well present inside the
+          container
+        run:
+          docker run -i --rm -v `pwd`/code:/newcode
+          reanahub/reana-demo-bsm-search diff -r /code /newcode
+
+  format-prettier:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+
+      - name: Check Prettier code formatting
+        run: |
+          npm install prettier --global
+          ./run-tests.sh --format-prettier
 
   format-shfmt:
     runs-on: ubuntu-24.04

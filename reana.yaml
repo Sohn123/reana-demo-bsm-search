@@ -7,8 +7,8 @@ workflow:
   file: workflow/databkgmc.yml
 outputs:
   files:
-   - plot/prefit.pdf
-   - plot/postfit.pdf
+    - plot/prefit.pdf
+    - plot/postfit.pdf
 tests:
   files:
     - tests/log-messages.feature

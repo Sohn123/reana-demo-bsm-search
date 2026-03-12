@@ -50,9 +50,9 @@ Releases) and be based on C++ with many dependencies and require multiple
 container images. In this emulation we have two container images.
 
 1. A pure ROOT6 container image `docker.io/reanahub/reana-demo-bsm-search` used
-for most steps (such as selection, merging etc) 1. An image based on ROOT6 which
-also has the `hftools` package installed. This image is used for the last steps
-dealing with fitting, plotting and exporting to HepData
+   for most steps (such as selection, merging etc) 1. An image based on ROOT6
+   which also has the `hftools` package installed. This image is used for the
+   last steps dealing with fitting, plotting and exporting to HepData
 
 #### [generantuple.py](code/generantuple.py) - Generating Toy Data
 
@@ -97,8 +97,7 @@ This script reads in the TNtuple of the selected events and creates the required
 histograms for building the statistical model and weights them to a specific
 luminosity. The command structure is
 
-`python /code/histogram.py {inputfile} {outputfile} {name} {weight}
-var,var2,...`
+`python /code/histogram.py {inputfile} {outputfile} {name} {weight} var,var2,...`
 
 the variations in this case are weight-only variations.
 
@@ -200,10 +199,10 @@ defining various data, signal, simulation, merging, fitting and plotting steps:
 At a very high level the workflow is as follows
 
 1. Generate and process "observed data" to produce observed data and a
-data-driven multijet estimate in the signal region.
+   data-driven multijet estimate in the signal region.
 
 1. For each non-multijet Standard Model process (MC1 and MC2), generate and
-process datasets including systematic variations
+   process datasets including systematic variations
 
 1. Generate and Process a signal dataset
 
@@ -242,19 +241,20 @@ The subworkflow generating and processing the "observed data" goes through these
 high-level stages.
 
 1. **Generating the Data** This stage generates data in a highly parallel
-fashion and then merges the files into a smaller number of files. We do not
-merge into a single file as this may end up being too large (currently merges
-happen in batches of six) 1. **Processing Data in Signal Region** This branch in
-the data workflow processes the data and selects and histograms events in the
-signal region. This will be the data the model is fitted against. 1.
-**Processing Data in Control Region for data-driven multijet estimate** This
-branch selects and histograms events in the control region to estimate the shape
-of the distribution and then uses a transfer factor which controls the
-normalization of the distribution in the signal region. This results in a
-so-called "data-driven" estimate the so-called "multijets" (or "qcd")
-background, since it would be unfeasible to estimate it using Monte-Carlo
-samples. 1. **Merge final results** Finally, the results are merged into a
-single file that holds all the resulting histograms from the data sub-workflow.
+   fashion and then merges the files into a smaller number of files. We do not
+   merge into a single file as this may end up being too large (currently merges
+   happen in batches of six) 1. **Processing Data in Signal Region** This branch
+   in the data workflow processes the data and selects and histograms events in
+   the signal region. This will be the data the model is fitted against. 1.
+   **Processing Data in Control Region for data-driven multijet estimate** This
+   branch selects and histograms events in the control region to estimate the
+   shape of the distribution and then uses a transfer factor which controls the
+   normalization of the distribution in the signal region. This results in a
+   so-called "data-driven" estimate the so-called "multijets" (or "qcd")
+   background, since it would be unfeasible to estimate it using Monte-Carlo
+   samples. 1. **Merge final results** Finally, the results are merged into a
+   single file that holds all the resulting histograms from the data
+   sub-workflow.
 
 #### The SM Background Workflow
 
@@ -365,8 +365,8 @@ workflow:
   file: workflow/databkgmc.yml
 outputs:
   files:
-   - plot/prefit.pdf
-   - plot/postfit.pdf
+    - plot/prefit.pdf
+    - plot/postfit.pdf
 ```
 
 We can now install the REANA command-line client, run the analysis and download

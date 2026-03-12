@@ -10,9 +10,9 @@ generate:
     image: docker.io/reanahub/reana-demo-bsm-search
     imagetag: 1.0.0
   publisher:
-    publisher_type: 'frompar-pub'
+    publisher_type: "frompar-pub"
     outputmap:
-      outputfile: 'outputfile'
+      outputfile: "outputfile"
 
 select:
   process:
@@ -26,9 +26,9 @@ select:
     image: docker.io/reanahub/reana-demo-bsm-search
     imagetag: 1.0.0
   publisher:
-    publisher_type: 'frompar-pub'
+    publisher_type: "frompar-pub"
     outputmap:
-      outputfile: 'outputfile'
+      outputfile: "outputfile"
 
 select_mc:
   process:
@@ -43,9 +43,9 @@ select_mc:
     image: docker.io/reanahub/reana-demo-bsm-search
     imagetag: 1.0.0
   publisher:
-    publisher_type: 'frompar-pub'
+    publisher_type: "frompar-pub"
     outputmap:
-      outputfile: 'outputfile'
+      outputfile: "outputfile"
 
 histogram:
   process:
@@ -60,9 +60,9 @@ histogram:
     image: docker.io/reanahub/reana-demo-bsm-search
     imagetag: 1.0.0
   publisher:
-    publisher_type: 'frompar-pub'
+    publisher_type: "frompar-pub"
     outputmap:
-      outputfile: 'outputfile'
+      outputfile: "outputfile"
 
 histogram_shape:
   process:
@@ -78,9 +78,9 @@ histogram_shape:
     image: docker.io/reanahub/reana-demo-bsm-search
     imagetag: 1.0.0
   publisher:
-    publisher_type: 'frompar-pub'
+    publisher_type: "frompar-pub"
     outputmap:
-      outputfile: 'outputfile'
+      outputfile: "outputfile"
 
 makews:
   process:
@@ -94,10 +94,10 @@ makews:
     image: docker.io/reanahub/reana-demo-bsm-search
     imagetag: 1.0.0
   publisher:
-    publisher_type: 'interpolated-pub'
+    publisher_type: "interpolated-pub"
     glob: True
     publish:
-      workspace: '{workspace_prefix}*combined*model.root'
+      workspace: "{workspace_prefix}*combined*model.root"
 
 merge_root:
   process:
@@ -111,9 +111,9 @@ merge_root:
     image: docker.io/reanahub/reana-env-root6
     imagetag: 6.18.04
   publisher:
-    publisher_type: 'frompar-pub'
+    publisher_type: "frompar-pub"
     outputmap:
-      mergedfile: 'mergedfile'
+      mergedfile: "mergedfile"
 
 merge_root_allpars:
   process:
@@ -127,9 +127,9 @@ merge_root_allpars:
     image: docker.io/reanahub/reana-env-root6
     imagetag: 6.18.04
   publisher:
-    publisher_type: 'frompar-pub'
+    publisher_type: "frompar-pub"
     outputmap:
-      mergedfile: 'mergedfile'
+      mergedfile: "mergedfile"
 
 plot:
   process:
@@ -146,10 +146,10 @@ plot:
     image: docker.io/reanahub/reana-demo-bsm-search
     imagetag: 1.0.0
   publisher:
-    publisher_type: 'frompar-pub'
+    publisher_type: "frompar-pub"
     outputmap:
-      prefit: 'prefit_plot'
-      postfit: 'postfit_plot'
+      prefit: "prefit_plot"
+      postfit: "postfit_plot"
 
 hepdata:
   process:
@@ -164,6 +164,6 @@ hepdata:
     image: docker.io/reanahub/reana-demo-bsm-search
     imagetag: 1.0.0
   publisher:
-    publisher_type: 'frompar-pub'
+    publisher_type: "frompar-pub"
     outputmap:
-      hepdata_submission_zip: 'hepdata_submission_zip'
+      hepdata_submission_zip: "hepdata_submission_zip"
