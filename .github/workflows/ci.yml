@@ -77,3 +77,21 @@ jobs:
 
       - name: Test whether the latest analysis code is well present inside the container
         run: docker run -i --rm -v `pwd`/code:/newcode reanahub/reana-demo-bsm-search diff -r /code /newcode
+
+lint-yamllint:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Lint YAML files
+        run: |
+          pip install yamllint
+          ./run-tests.sh --lint-yamllint

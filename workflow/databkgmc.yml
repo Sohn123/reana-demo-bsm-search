@@ -16,7 +16,7 @@ stages:
       parameters:
         mcname: [mc1,mc2]
         mcweight: [0.01875,0.0125]  # [Ndata / Ngen * 0.2 * 0.15,  Ndata / Ngen * 0.2 * 0.1] = [10/16*0.03, 1/16 * 0.02]
-        nevents:  [40000,40000,40000,40000]  #160k events / mc sample
+        nevents:  [40000,40000,40000,40000]  # 160k events / mc sample
       workflow: {$ref: workflow/wflow_all_mc.yml}
   - name: data
     scheduler:
@@ -29,7 +29,7 @@ stages:
       scheduler_type: singlestep-stage
       parameters:
         nevents: [40000,40000]
-        mcweight: 0.0025 #Ndata / Ngen * 0.2 * 0.1] = [100/80 * 0.2 * 0.05]
+        mcweight: 0.0025 # Ndata / Ngen * 0.2 * 0.1] = [100/80 * 0.2 * 0.05]
       workflow: {$ref: workflow/workflow_sig.yml}
   - name: merge
     dependencies: [all_bkg_mc,data,signal]
